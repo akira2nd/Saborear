@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
+//declarando tipo carro
 struct carro{
 	char marca[15];
 	int ano;
@@ -10,14 +11,18 @@ struct carro{
 
 struct carro vCars[20];
 
+//menu
 int menu(){
+	printf("\n------------ MENU ------------\n");
 	printf("1 - Cadastrar carro\n");
 	printf("2 - Filtrar preço\n");
 	printf("3 - Filtrar marca\n");
 	printf("4 - Filtrar marca, ano e cor\n");
 	printf("5 - Sair\n");
+	printf("------------------------------\n");
 }
 
+//cadastro dos veículos
 void cadastrar(int * i){
 	int newCar = 1;
 	int k = * i;
@@ -41,14 +46,29 @@ void cadastrar(int * i){
 	}
 }
 
-int filtrarPreco(int * i){
-
+//Filtro por preço
+void filtrarPreco(int * i){
+	int k;
+	double precoUser;
+	printf("Digite o preço: ");
+	scanf("%lf", &precoUser);
+	for(k = 0; k < * i; k++){
+		if(vCars[k].preco <= precoUser){
+			printf("\n");
+			printf("Marca: %s\n", vCars[k].marca);
+			printf("Ano  : %d\n", vCars[k].ano);
+			printf("Cor  : %s\n", vCars[k].cor);
+		}
+	}
+	printf("\n");
 }
 
+//filtro por marca
 int filtrarMarca(int * i){
 
 }
 
+//filtro por marca, ano e cor
 int filtrarMAC(int * i){
 
 }
