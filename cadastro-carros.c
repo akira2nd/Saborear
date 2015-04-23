@@ -25,7 +25,7 @@ int menu(){
 //cadastro dos veículos
 void cadastrar(int * i){
 	int newCar = 1;
-	int k = * i;
+	int k = * i;			//k recebe conteúdo para onde o i aponta
 	while(newCar){
 		printf("Marca: ");
 		scanf("%s", &vCars[k].marca);
@@ -41,7 +41,7 @@ void cadastrar(int * i){
 
 		printf("0 Finalizar  ou  1 Continuar\n");
 		scanf("%d", &newCar);
-		* i = * i + 1;
+		* i = * i + 1; 		//acrescenta +1 no contador i, pois foi adicionado um veículo
 		k++;
 	}
 }
@@ -52,7 +52,7 @@ void filtrarPreco(int * i){
 	double precoUser;
 	printf("Digite o preço: ");
 	scanf("%lf", &precoUser);
-	for(k = 0; k < * i; k++){
+	for(k = 0; k < * i; k++){	//enquanto k menor que quant de veículos cadastrados
 		if(vCars[k].preco <= precoUser){
 			printf("\n");
 			printf("Marca: %s\n", vCars[k].marca);
@@ -64,15 +64,45 @@ void filtrarPreco(int * i){
 }
 
 //filtro por marca
-int filtrarMarca(int * i){
-
+void filtrarMarca(int * i){
+	int k,  existe = 0;
+	char marcaUser[15];
+	printf("Digite a marca: ");
+	scanf("%s", &marcaUser);
+	for(k = 0; k < * i; k++){	//enquanto k menor que quant de veículos cadastrados
+		if(!strcmp(vCars[k].marca, marcaUser)){
+			existe = 1;
+			printf("\n");
+			printf("Preço: %.2lf\n", vCars[k].preco);
+			printf("Ano  : %d\n", vCars[k].ano);
+			printf("Cor  : %s\n", vCars[k].cor);
+		}
+	}
+	if(!existe)
+		printf("Nenhum carro encontrado.\n");
 }
 
 //filtro por marca, ano e cor
 int filtrarMAC(int * i){
-
+	int k,  existe = 0;
+	char marcaUser[15], corUser[10];
+	int anoUser;
+	printf("Marca: ");
+	scanf("%s", &marcaUser);
+	printf("Ano  : ");
+	scanf("%d", &anoUser);
+	printf("Cor  : ");
+	scanf("%s", &corUser);
+	
+	for(k = 0; k < * i; k++){	//enquanto k menor que quant de veículos cadastrados
+		if(!strcmp(vCars[k].marca, marcaUser) && vCars[k].ano == anoUser && !strcmp(vCars[k].cor, corUser)){
+			existe = 1;
+			printf("Preço: %.2lf\n", vCars[k].preco);
+		}
+	}
+	if(!existe)
+		printf("Nenhum carro encontrado.\n");
 }
-
 
 int main(){
 	int i = 0;
@@ -83,16 +113,16 @@ int main(){
 
 		switch(menuUser){
 			case 1:
-				cadastrar(&i);
+				cadastrar(&i);  	//passa endereço de memória
 				break;
 			case 2:
-				filtrarPreco(&i);
+				filtrarPreco(&i);	//passa endereço de memória
 				break;
 			case 3:
-				filtrarMarca(&i);
+				filtrarMarca(&i);	//passa endereço de memória
 				break;
 			case 4:
-				filtrarMAC(&i);
+				filtrarMAC(&i);		//passa endereço de memória
 				break;
 			case 5:
 				break;
@@ -101,5 +131,4 @@ int main(){
 				break;
 		}
 	} while(menuUser != 5);
-
 }
