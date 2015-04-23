@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 
 struct carro{
 	char marca[15];
@@ -19,19 +18,38 @@ int menu(){
 	printf("5 - Sair\n");
 }
 
-int cadastrar(int i){
+void cadastrar(int * i){
+	int newCar = 1;
+	int k = * i;
+	while(newCar){
+		printf("Marca: ");
+		scanf("%s", &vCars[k].marca);
+
+		printf("Ano  : ");
+		scanf("%d", &vCars[k].ano);
+
+		printf("Cor  : ");
+		scanf("%s", &vCars[k].cor);
+
+		printf("Preço: ");
+		scanf("%lf", &vCars[k].preco);
+
+		printf("0 Finalizar  ou  1 Continuar\n");
+		scanf("%d", &newCar);
+		* i = * i + 1;
+		k++;
+	}
+}
+
+int filtrarPreco(int * i){
 
 }
 
-int filtrarPreco(int i){
+int filtrarMarca(int * i){
 
 }
 
-int filtrarMarca(int i){
-
-}
-
-int filtrarMAP(int i){
+int filtrarMAC(int * i){
 
 }
 
@@ -45,16 +63,16 @@ int main(){
 
 		switch(menuUser){
 			case 1:
-				cadastrar(i);
+				cadastrar(&i);
 				break;
 			case 2:
-				filtrarPreco(i);
+				filtrarPreco(&i);
 				break;
 			case 3:
-				filtrarMarca(i);
+				filtrarMarca(&i);
 				break;
 			case 4:
-				filtrarMAP(i);
+				filtrarMAC(&i);
 				break;
 			case 5:
 				break;
