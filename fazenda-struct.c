@@ -71,6 +71,8 @@ void abate(int * i) {
 			gado[k].abate[0] = 'S';
 		else
 			gado[k].abate[0] = 'N';
+
+		printf("%c\n", gado[k].abate[0]);
 	}
 }
 
@@ -85,7 +87,7 @@ void leite(int * i) {
 void leiteAbate(int * i) {
 	int k, totalLeite = 0;
 	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
-		if(gado[k].abate == 'N')
+		if(gado[k].abate[0] == 'N')
 			totalLeite += gado[k].leite;
 	}
 	printf("%d l de leite por semana após abate.\n", totalLeite);
@@ -96,20 +98,25 @@ void alimento(int * i) {
 	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
 		totalAlimento += gado[k].alimento;
 	}
-	printf("%d kg de leite por semana.\n", totalAlimento);
+	printf("%d kg de alimento por semana.\n", totalAlimento);
 }
 
 void alimentoAbate(int * i) {
 	int k, totalAlimento = 0;
 	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
-		if(gado[k].abate == 'N')
+		if(gado[k].abate[0] == 'N')
 			totalAlimento += gado[k].alimento;
 	}
-	printf("%d kg de leite por semana após abate.\n", totalAlimento);
+	printf("%d kg de alimento por semana após abate.\n", totalAlimento);
 }
 
 void gadosAbate(int * i) {
-	
+	int k, totalAbate = 0;
+	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
+		if(gado[k].abate[0] == 'S')
+			totalAbate++;
+	}
+	printf("%d gados irão para abate.\n", totalAbate);
 }
 
 int main(){
@@ -144,6 +151,6 @@ int main(){
 				printf("Menu inválido\n");
 				break;
 		}
-            system("pause");
+    	system("pause");
 	} while(menuUser != 6);
 }
