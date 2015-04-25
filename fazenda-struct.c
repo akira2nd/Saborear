@@ -61,16 +61,20 @@ void abate(int * i) {
 	double idade;
 	int k, leite, alimento, anoHoje = 2015, mesHoje = 4;
 	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
-		alimento = gado[k].alimento / 7;
+		alimento = gado[k].alimento;
 		leite = gado[k].leite;
-		idade = anoHoje - gado[k].nascimento.ano + ((gado[k].nascimento.mes - mesHoje) / 10);
-		if(gado[k].nascimento.mes > mesHoje)
-			idade--;
+		idade = (anoHoje - gado[k].nascimento.ano) + ((12 - gado[k].nascimento.mes + mesHoje) / 10.0);
+		
+		if(gado[k].nascimento.mes >= mesHoje)
+			idade -= 1.0;
 
 		if(idade > 5 || leite < 40 || (leite > 50 && leite < 70 && alimento > 50))
 			gado[k].abate[0] = 'S';
 		else
 			gado[k].abate[0] = 'N';
+
+		printf("abate: %s\n", gado[k].abate);
+		printf("%.1lf anos\n", idade);
 	}
 }
 
@@ -102,6 +106,7 @@ int main(){
 	int i = 0;
 	int menuUser = 0;
 	cadastrar(&i);
+	abate(&i);
 	do {
 		system("cls");
 		menu();
