@@ -63,18 +63,14 @@ void abate(int * i) {
 	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
 		alimento = gado[k].alimento;
 		leite = gado[k].leite;
-		idade = (anoHoje - gado[k].nascimento.ano) + ((12 - gado[k].nascimento.mes + mesHoje) / 10.0);
-		
+		idade = (anoHoje - gado[k].nascimento.ano) + ((12 - gado[k].nascimento.mes + mesHoje) / 10.0);		
 		if(gado[k].nascimento.mes >= mesHoje)
-			idade -= 1.0;
+			idade--;
 
 		if(idade > 5 || leite < 40 || (leite > 50 && leite < 70 && alimento > 50))
 			gado[k].abate[0] = 'S';
 		else
 			gado[k].abate[0] = 'N';
-
-		printf("abate: %s\n", gado[k].abate);
-		printf("%.1lf anos\n", idade);
 	}
 }
 
@@ -83,19 +79,33 @@ void leite(int * i) {
 	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
 		totalLeite += gado[k].leite;
 	}
-	printf("%dl de Leite/Semana.\n", totalLeite);
+	printf("%d l de leite por semana.\n", totalLeite);
 }
 
 void leiteAbate(int * i) {
-	
+	int k, totalLeite = 0;
+	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
+		if(gado[k].abate == 'N')
+			totalLeite += gado[k].leite;
+	}
+	printf("%d l de leite por semana após abate.\n", totalLeite);
 }
 
 void alimento(int * i) {
-	
+	int k, totalAlimento = 0;
+	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
+		totalAlimento += gado[k].alimento;
+	}
+	printf("%d kg de leite por semana.\n", totalAlimento);
 }
 
 void alimentoAbate(int * i) {
-	
+	int k, totalAlimento = 0;
+	for(k = 0; k < * i; k++){	//enquanto k menor que quant de gado cadastrados
+		if(gado[k].abate == 'N')
+			totalAlimento += gado[k].alimento;
+	}
+	printf("%d kg de leite por semana após abate.\n", totalAlimento);
 }
 
 void gadosAbate(int * i) {
