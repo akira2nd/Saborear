@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 //declarando tipo carro
 struct carro{
@@ -38,8 +39,10 @@ void cadastrar(int * i){
 
 		printf("Preço: ");
 		scanf("%lf", &vCars[k].preco);
-
+		
+        printf("------------------------------\n");
 		printf("0 Finalizar  ou  1 Continuar\n");
+		printf("------------------------------\n");
 		scanf("%d", &newCar);
 		* i = * i + 1; 		//acrescenta +1 no contador i, pois foi adicionado um veículo
 		k++;
@@ -93,7 +96,7 @@ int filtrarMAC(int * i){
 	scanf("%d", &anoUser);
 	printf("Cor  : ");
 	scanf("%s", &corUser);
-	
+
 	for(k = 0; k < * i; k++){	//enquanto k menor que quant de veículos cadastrados
 		if(!strcmp(vCars[k].marca, marcaUser) && vCars[k].ano == anoUser && !strcmp(vCars[k].cor, corUser)){
 			existe = 1;
@@ -108,6 +111,7 @@ int main(){
 	int i = 0;
 	int menuUser = 0;
 	do {
+		system("cls");
 		menu();
 		scanf("%d", &menuUser);
 
@@ -130,5 +134,6 @@ int main(){
 				printf("Menu inválido\n");
 				break;
 		}
+            system("pause");
 	} while(menuUser != 5);
 }
