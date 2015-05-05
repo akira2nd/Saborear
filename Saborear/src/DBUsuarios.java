@@ -12,7 +12,7 @@ public class DBUsuarios {
 		usuarios.add(usuario);
 	}
 		
-	public void excluirConta(ContaUsuario conta){
+	public void excluirConta(Login conta){
 		usuarios.remove(conta);
 	}
 	

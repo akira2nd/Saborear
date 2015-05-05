@@ -3,10 +3,10 @@ import java.util.List;
 
 public class Restaurante {
 	private String nome;
-	private ContaRestaurante conta;
+	private Login conta;
 	private List<Prato> pratos;
 	
-	public Restaurante(String n, ContaRestaurante c, List<Prato> p){
+	public Restaurante(String n, Login c, List<Prato> p){
 		nome = n;
 		conta = c;
 		pratos = p;
@@ -16,7 +16,7 @@ public class Restaurante {
 		return nome;
 	}
 	
-	public ContaRestaurante getConta(){
+	public Login getConta(){
 		return conta;
 	}
 	

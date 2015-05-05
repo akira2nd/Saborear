@@ -5,10 +5,10 @@ public class Usuario {
 	private String email;
 	private int idade;
 	private String sexo;
-	private ContaUsuario conta;
+	private Login conta;
 	private List<Prato> favoritos;
 	
-	public Usuario(String e, int i, String s, ContaUsuario c, List<Prato> f){
+	public Usuario(String e, int i, String s, Login c, List<Prato> f){
 		email = e;
 		idade = i;
 		sexo = s;
@@ -28,7 +28,7 @@ public class Usuario {
 		return sexo;
 	}
 	
-	public ContaUsuario getConta(){
+	public Login getConta(){
 		return conta;
 	}
 	
