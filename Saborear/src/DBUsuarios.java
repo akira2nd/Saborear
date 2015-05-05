@@ -8,15 +8,15 @@ public class DBUsuarios {
 		usuarios = new LinkedList<Usuario>();
 	}
 	
+	public List<Usuario> getUsuarios(){
+		return usuarios;
+	}
+	
 	public void addUsuario(Usuario usuario){
 		usuarios.add(usuario);
 	}
 		
 	public void excluirConta(Login conta){
 		usuarios.remove(conta);
-	}
-	
-	public List<Usuario> getUsuarios(){
-		return usuarios;
 	}
 }
