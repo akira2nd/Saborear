@@ -17,7 +17,7 @@ public class Login {
 	
 	public boolean matches(Login conta){
 		if(!nomeUsuario.equals(getNomeUsuario())) return false;
-		if(senha.equals(getSenha())) return false;
+		if(!senha.equals(getSenha())) return false;
 		return true;
 	}
 }
