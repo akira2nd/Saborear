@@ -16,7 +16,10 @@ public class DBUsuarios {
 		usuarios.add(usuario);
 	}
 		
-	public void excluirConta(Login conta){
-		usuarios.remove(conta);
+	public void excluirConta(String nomeUsuario){
+		for(Usuario user:usuarios){
+			if(user.getConta().getNomeUsuario().equals(nomeUsuario)) usuarios.remove(user);
+		}
 	}
 }
+
