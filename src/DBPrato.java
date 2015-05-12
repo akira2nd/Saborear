@@ -18,7 +18,7 @@ public class DBPrato {
 		
 	public void excluirPrato(String nomePrato, String nomeRestaurante){
 		for(Prato prato:pratos){
-			if(prato.getRestaurante().getNome()== nomeRestaurante && prato.getSpec().)
+			if(prato.getRestaurante().getNome().equals(nomeRestaurante)  && prato.getSpec().getNomePrato().equals(nomePrato)) pratos.remove(prato);
 		}
 	}
 }
