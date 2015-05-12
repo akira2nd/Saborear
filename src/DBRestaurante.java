@@ -14,6 +14,15 @@ public class DBRestaurante {
 	}
 	
 	public void addRestaurante(Restaurante restaurante){
-		restaurantes.add(restaurante);
+		if(verificarExistente(restaurante) == false){
+			restaurantes.add(restaurante);
+		}
+	}
+	
+	public boolean verificarExistente(Restaurante restaurante){
+		for(Restaurante r:restaurantes){
+			if(r.getConta().getNomeUsuario().equals(restaurante.getConta().getNomeUsuario())) return true;
+		}
+		return false;
 	}
 }
