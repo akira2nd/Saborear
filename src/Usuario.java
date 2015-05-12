@@ -6,14 +6,12 @@ public class Usuario {
 	private int idade;
 	private String sexo;
 	private Login conta;
-	private List<Prato> favoritos;
 	
-	public Usuario(String e, int i, String s, Login c, List<Prato> f){
+	public Usuario(String e, int i, String s, Login c){
 		email = e;
 		idade = i;
 		sexo = s;
 		conta = c;
-		favoritos = f;
 	}
 	
 	public String getEmail(){
@@ -31,9 +29,4 @@ public class Usuario {
 	public Login getConta(){
 		return conta;
 	}
-	
-	public List<Prato> getFavoritos(){
-		return favoritos;
-	}
-
 }
