@@ -13,7 +13,16 @@ public class DBPrato {
 	}
 	
 	public void addPrato(Prato prato){
-		pratos.add(prato);
+		if(verificarExistente(prato) == false) {
+			pratos.add(prato);
+		}
+	}
+	
+	public boolean verificarExistente(Prato prato){
+		for(Prato p:pratos){
+			if(p.getSpec().getNomePrato().equals(prato.getSpec().getNomePrato())) return true;
+		}
+		return false;
 	}
 		
 	public void excluirPrato(String nomePrato, String nomeRestaurante){
