@@ -3,9 +3,9 @@ public class SpecPrato {
 	private String nomePrato;
 	private String ingredientes;
 	
-	public SpecPrato(String n, String i){
-		nomePrato = n;
-		ingredientes = i;
+	public SpecPrato(String nomePrato, String ingredientes){
+		this.nomePrato = nomePrato;
+		this.ingredientes = ingredientes;
 	}
 	
 	public String getNomePrato(){

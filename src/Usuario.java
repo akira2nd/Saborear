@@ -7,11 +7,11 @@ public class Usuario {
 	private String sexo;
 	private Login conta;
 	
-	public Usuario(String e, int i, String s, Login c){
-		email = e;
-		idade = i;
-		sexo = s;
-		conta = c;
+	public Usuario(String email, int idade, String sexo, Login conta){
+		this.email = email;
+		this.idade = idade;
+		this.sexo = sexo;
+		this.conta = conta;
 	}
 	
 	public String getEmail(){

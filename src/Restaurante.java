@@ -6,10 +6,10 @@ public class Restaurante {
 	private Login conta;
 	private List<Prato> pratos;
 	
-	public Restaurante(String n, Login c, List<Prato> p){
-		nome = n;
-		conta = c;
-		pratos = p;
+	public Restaurante(String nome, Login conta, List<Prato> pratos){
+		this.nome = nome;
+		this.conta = conta;
+		this.pratos = pratos;
 	}
 	
 	public String getNome(){
