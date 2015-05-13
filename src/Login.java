@@ -3,9 +3,9 @@ public class Login {
 	private String nomeUsuario;
 	private String senha;
 	
-	public Login(String n, String s){
-		nomeUsuario = n;
-		senha = s;
+	public Login(String nomeUsuatio, String senha){
+		this.nomeUsuario = nomeUsuario;
+		this.senha = senha;
 	}
 	
 	public String getNomeUsuario(){

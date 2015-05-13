@@ -4,10 +4,10 @@ public class Prato {
 	private Restaurante restaurante;
 	private SpecPrato spec;
 	
-	public Prato(double p, Restaurante r, SpecPrato s){
-		preco = p;
-		restaurante = r;
-		spec = s;
+	public Prato(double preco, Restaurante restaurante, SpecPrato spec){
+		this.preco = preco;
+		this.restaurante = restaurante;
+		this.spec = spec;
 	}
 	
 	public double getPreco(){
