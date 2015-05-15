@@ -1,15 +1,11 @@
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class DBUsuarios {
-	private List<Usuario> usuarios;
 	
-	public DBUsuarios(){
-		ConcurrentLinkedQueue<Usuario> usuarios = new ConcurrentLinkedQueue<Usuario>(); //não sei se é assim esse concurrentlinkedqueue
-	}
+	private ConcurrentLinkedQueue<Usuario> usuarios = new ConcurrentLinkedQueue<Usuario>();
 	
-	public List<Usuario> getUsuarios(){
+	
+	public ConcurrentLinkedQueue<Usuario> getUsuarios(){
 		return usuarios;
 	}
 	

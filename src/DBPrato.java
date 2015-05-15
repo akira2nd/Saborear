@@ -1,15 +1,9 @@
-import java.util.LinkedList;
-import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 //teste
 public class DBPrato {
-	private List<Prato> pratos;
-	
-	public DBPrato(){
-		pratos = new LinkedList<Prato>();
-	}
-	
-	public List<Prato> getPratos(){
+	private ConcurrentLinkedQueue<Prato> pratos = new ConcurrentLinkedQueue<Prato>();
+		
+	public ConcurrentLinkedQueue<Prato> getPratos(){
 		return pratos;
 	}
 	
