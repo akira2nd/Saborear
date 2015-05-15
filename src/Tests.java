@@ -11,7 +11,7 @@ public class Tests {
 	@Test
 	public void test() {
 		//inicio testes
-		//Prato(double preco, SpecPrato spec)	
+		//Prato(double preco, SpecPrato spec)
 		//Restaurante(String nome, Login conta, List<Prato> pratos)
 		//SpecPrato(String nomePrato, String ingredientes)
 		//Usuario(String email, int idade, String sexo, Login conta)
@@ -19,9 +19,10 @@ public class Tests {
 		
 		DBRestaurante restaurante = new DBRestaurante();
 		
-		restaurante.addRestaurante(new Restaurante("String nome", new Login("String nomeUsuario", "String senha"), new list<Prato> ("3.5", new SpecPrato("batata", "batata"))));
-		
 
+		restaurante.addRestaurante(new Restaurante("String nome", new Login("String nomeUsuario", "String senha"), new List<Prato> (3.5, new SpecPrato("batata", "batata"))));
+		
+/*
 		MusicList list = new MusicList();
 		
 		list.addMusic(new Music("Note: Capo in the 3rd -- [G] How many special people...", new Spec("Banda", "Musica")));
@@ -30,5 +31,6 @@ public class Tests {
 		assertEquals(list.getMusics().size(), 2);
 		Music music = list.searchMusic(new Spec("NomeBanda", "NomeMusica"));
 		assertEquals(music.getChords(), "Note: Capo in the 2rd -- [Em] Toda is...");
+*/
 	}
 }

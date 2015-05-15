@@ -1,12 +1,12 @@
 
 public class Prato {
 	private double preco;
-//	private Restaurante restaurante;
+	private Restaurante restaurante;
 	private SpecPrato spec;
 	
 	public Prato(double preco, Restaurante restaurante, SpecPrato spec){
 		this.preco = preco;
-//		this.restaurante = restaurante;
+		this.restaurante = restaurante;
 		this.spec = spec;
 	}
 	
@@ -14,9 +14,9 @@ public class Prato {
 		return preco;
 	}
 	
-//	public Restaurante getRestaurante(){
-//		return restaurante;
-//	}
+	public Restaurante getRestaurante(){
+		return restaurante;
+	}
 	
 	public SpecPrato getSpec(){
 		return spec;
