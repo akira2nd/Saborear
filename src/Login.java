@@ -3,7 +3,7 @@ public class Login {
 	private String nomeUsuario;
 	private String senha;
 	
-	public Login(String nomeUsuatio, String senha){
+	public Login(String nomeUsuario, String senha){
 		this.nomeUsuario = nomeUsuario;
 		this.senha = senha;
 	}
