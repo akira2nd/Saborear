@@ -6,10 +6,9 @@ public class Restaurante {
 	private Login conta;
 	private List<Prato> pratos;
 	
-	public Restaurante(String nome, Login conta, List<Prato> pratos){
+	public Restaurante(String nome, Login conta){
 		this.nome = nome;
 		this.conta = conta;
-		this.pratos = pratos;
 	}
 	
 	public String getNome(){
@@ -20,7 +19,12 @@ public class Restaurante {
 		return conta;
 	}
 	
-	public List<Prato> getPratos(){
+	public List<Prato> getPratos(Restaurante restaurante){
+		for(Prato prato: pratos){
+			if(prato.getRestaurante().getNome().equals(restaurante.getNome())) {
+				pratos.add(prato);
+			}
+		}
 		return pratos;
 	}
 }
