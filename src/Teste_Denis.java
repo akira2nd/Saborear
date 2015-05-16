@@ -67,8 +67,8 @@ NAO		- Verificar se usuário está logado
 		assertEquals(listRest.getRestaurantes().size(), 5);
 	
 		//Testa nome usuário repetido
-		//listRest.addRestaurante(new Restaurante("Restaurante E", new Login("restA", "12345")));
-		//assertEquals(listRest.getRestaurantes().size(), 6);
+		listRest.addRestaurante(new Restaurante("Restaurante E", new Login("restA", "12345")));
+		assertEquals(listRest.getRestaurantes().size(), 5);
 		
 		//------------------------------------------ Teste 03 ------------------------------------------
 		DBPrato listPrato = new DBPrato();
@@ -78,17 +78,16 @@ NAO		- Verificar se usuário está logado
 
 		assertEquals(listPrato.getPratos().size(), 3);
 		
-		//Teste prato já existente
-		//
-		//listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 3", "Arroz, feijão")));
-		//assertEquals(listPrato.getPratos().size(), 4);
+		//Teste prato JÁ existente
+		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 3", "Arroz, feijão")));
+		assertEquals(listPrato.getPratos().size(), 3);
 		
 		//------------------------------------------ Teste 04 ------------------------------------------
 		
 		listPrato.excluirPrato("Prato 2", "Restaurante A");		
 		assertEquals(listPrato.getPratos().size(), 2);
 		
-		//Teste remover prato não existente
+		//Teste remover prato NÃO existente
 		//listPrato.excluirPrato("Prato 1", "Restaurante B");
 		//assertEquals(listPrato.getPratos().size(), 1);
 		
