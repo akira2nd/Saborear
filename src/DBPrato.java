@@ -25,4 +25,14 @@ public class DBPrato {
 			if(prato.getRestaurante().getNome().equals(nomeRestaurante)  && prato.getSpec().getNomePrato().equals(nomePrato)) pratos.remove(prato);
 		}
 	}
+	
+	public ConcurrentLinkedQueue<Prato> buscarPrato(String palavra){
+		ConcurrentLinkedQueue<Prato> encontrados = new ConcurrentLinkedQueue<Prato>();
+		for(Prato prato:pratos){
+			if(prato.getSpec().getNomePrato().contains(palavra) || (prato.getSpec().getIngredientes().contains(palavra))){
+				encontrados.add(prato);
+			}
+		}
+		return encontrados;
+	}
 }
