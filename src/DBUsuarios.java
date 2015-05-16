@@ -27,5 +27,12 @@ public class DBUsuarios {
 			if(user.getConta().getNomeUsuario().equals(nomeUsuario)) usuarios.remove(user);
 		}
 	}
+	
+	public Usuario getUsuario(String emailUsuario){
+		for(Usuario u:usuarios){
+			if(u.getEmail().equals(emailUsuario)) return u;
+		}
+		return null;
+	}
 }
 
