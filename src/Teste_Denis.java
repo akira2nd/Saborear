@@ -17,25 +17,29 @@ public class Teste_Denis {
 		//Login(String nomeUsuario, String senha)
 		
 		/*------------------------------------------ Teste 01 ------------------------------------------
-		- Adicionar usuário √
-		- Verificar se já existe √
-		- Confirmar se foi adicionado √
+ok		- Adicionar usuário
+ok		- Verificar se já existe
+ok		- Confirmar se foi adicionado
 		------------------------------------------ Teste 02 ------------------------------------------
-		- Adicionar Restaurante √
-		- Verificar se já existe √
-		- Confirmar se foi adicionado √
+ok		- Adicionar Restaurante
+ok		- Verificar se já existe
+ok		- Confirmar se foi adicionado
 		------------------------------------------ Teste 03 ------------------------------------------
-		- Adicionar prato (Prato, Restaurante) √
-		- Verificar se o prato existe nesse restaurante √
-		- Confirmar se foi adicionado √
+ok		- Adicionar prato (Prato, Restaurante)
+NAO		- Verificar se restaurante está logado
+ok		- Verificar se o prato existe nesse restaurante
+ok		- Confirmar se foi adicionado
 		------------------------------------------ Teste 04 ------------------------------------------
-		- Excluir prato (Prato, Restaurante)
-		- Verificar se o restaurante está logado
-		- Verificar se o prato existe nesse restaurante
-		- Confirmar se foi exluído
+ok		- Excluir prato (Prato, Restaurante)
+NAO		- Verificar se restaurante está logado
+ok		- Verificar se o prato existe nesse restaurante
+ok		- Confirmar se foi exluído
 		------------------------------------------ Teste 05 ------------------------------------------
-		- Buscar prato (nome prato)
-		- Buscar prato (ingrediente)
+NAO		- Buscar prato (nome prato)
+NAO		- Buscar prato (ingrediente)
+		------------------------------------------ Teste 06 ------------------------------------------
+NAO		- Logar restaurante
+NAO		- Verificar se está logado
 		---------------------------------------------------------------------------------------------*/
 		
 		
@@ -48,6 +52,10 @@ public class Teste_Denis {
 		
 		assertEquals(listUsu.getUsuarios().size(), 3);
 		
+		//Testa nome usuário repetido
+		//listUsu.addUsuario(new Usuario("user3@site.com", 30, "m", new Login("user3", "12345")));
+		//assertEquals(listUsu.getUsuarios().size(), 4);
+		
 		//------------------------------------------ Teste 02 ------------------------------------------
 		DBRestaurante listRest = new DBRestaurante();
 		listRest.addRestaurante(new Restaurante("Restaurante A", new Login("restA", "12345")));
@@ -57,6 +65,10 @@ public class Teste_Denis {
 		listRest.addRestaurante(new Restaurante("Restaurante E", new Login("restE", "12345")));
 		
 		assertEquals(listRest.getRestaurantes().size(), 5);
+	
+		//Testa nome usuário repetido
+		//listRest.addRestaurante(new Restaurante("Restaurante E", new Login("restA", "12345")));
+		//assertEquals(listRest.getRestaurantes().size(), 6);
 		
 		//------------------------------------------ Teste 03 ------------------------------------------
 		DBPrato listPrato = new DBPrato();
@@ -65,6 +77,23 @@ public class Teste_Denis {
 		listPrato.addPrato(new Prato(49.90, new Restaurante("Restaurante A", new Login("restA", "12345")), new SpecPrato("Prato 3", "Arroz, feijão")));
 
 		assertEquals(listPrato.getPratos().size(), 3);
+		
+		//Teste prato já existente
+		//listPrato.addPrato(new Prato(49.90, new Restaurante("Restaurante A", new Login("restA", "12345")), new SpecPrato("Prato 2", "Arroz, feijão")));
+		//assertEquals(listPrato.getPratos().size(), 4);
+		
+		//------------------------------------------ Teste 04 ------------------------------------------
+		
+		listPrato.excluirPrato("Prato 2", "Restaurante A");		
+		assertEquals(listPrato.getPratos().size(), 2);
+		
+		//listPrato.excluirPrato("Prato 1", "Restaurante B"); >> Testa prato não existente no restaurante
+		//assertEquals(listPrato.getPratos().size(), 1);
+		
+		//------------------------------------------ Teste 05 ------------------------------------------
+		
+		//------------------------------------------ Teste 05 ------------------------------------------
+		
 	}
 
 }
