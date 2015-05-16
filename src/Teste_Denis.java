@@ -26,20 +26,20 @@ ok		- Verificar se já existe
 ok		- Confirmar se foi adicionado
 		------------------------------------------ Teste 03 ------------------------------------------
 ok		- Adicionar prato (Prato, Restaurante)
-NAO		- Verificar se restaurante está logado
 ok		- Verificar se o prato existe nesse restaurante
 ok		- Confirmar se foi adicionado
 		------------------------------------------ Teste 04 ------------------------------------------
 ok		- Excluir prato (Prato, Restaurante)
-NAO		- Verificar se restaurante está logado
 ok		- Verificar se o prato existe nesse restaurante
 ok		- Confirmar se foi exluído
 		------------------------------------------ Teste 05 ------------------------------------------
 NAO		- Buscar prato (nome prato)
 NAO		- Buscar prato (ingrediente)
 		------------------------------------------ Teste 06 ------------------------------------------
-NAO		- Logar restaurante
-NAO		- Verificar se está logado
+OK		- Logar restaurante
+OK		- Verificar se restaurante está logado
+NAO		- Logar usuário
+NAO		- Verificar se usuário está logado
 		---------------------------------------------------------------------------------------------*/
 		
 		
@@ -72,14 +72,15 @@ NAO		- Verificar se está logado
 		
 		//------------------------------------------ Teste 03 ------------------------------------------
 		DBPrato listPrato = new DBPrato();
-		listPrato.addPrato(new Prato(49.90, new Restaurante("Restaurante A", new Login("restA", "12345")), new SpecPrato("Prato 1", "Arroz, feijão")));
-		listPrato.addPrato(new Prato(49.90, new Restaurante("Restaurante A", new Login("restA", "12345")), new SpecPrato("Prato 2", "Arroz, feijão")));
-		listPrato.addPrato(new Prato(49.90, new Restaurante("Restaurante A", new Login("restA", "12345")), new SpecPrato("Prato 3", "Arroz, feijão")));
+		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 1", "Arroz, feijão")));
+		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 2", "Arroz, feijão")));
+		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 3", "Arroz, feijão")));
 
 		assertEquals(listPrato.getPratos().size(), 3);
 		
 		//Teste prato já existente
-		//listPrato.addPrato(new Prato(49.90, new Restaurante("Restaurante A", new Login("restA", "12345")), new SpecPrato("Prato 2", "Arroz, feijão")));
+		//
+		//listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 3", "Arroz, feijão")));
 		//assertEquals(listPrato.getPratos().size(), 4);
 		
 		//------------------------------------------ Teste 04 ------------------------------------------
@@ -87,12 +88,24 @@ NAO		- Verificar se está logado
 		listPrato.excluirPrato("Prato 2", "Restaurante A");		
 		assertEquals(listPrato.getPratos().size(), 2);
 		
-		//listPrato.excluirPrato("Prato 1", "Restaurante B"); >> Testa prato não existente no restaurante
+		//Teste remover prato não existente
+		//listPrato.excluirPrato("Prato 1", "Restaurante B");
 		//assertEquals(listPrato.getPratos().size(), 1);
 		
 		//------------------------------------------ Teste 05 ------------------------------------------
 		
-		//------------------------------------------ Teste 05 ------------------------------------------
+		
+		
+		//------------------------------------------ Teste 06 ------------------------------------------
+		//Teste SEM logar restaurante (deve retornar false)
+		Restaurante restB = listRest.getRestaurante("Restaurante B");
+		boolean status = restB.getConta().getStatus();
+		assertEquals(status, false);
+		
+		//Teste APÓS logar restaurante (deve retornar true)
+		boolean novoStatus = restB.getConta().logar(new Login(restB.getConta().getNomeUsuario(), restB.getConta().getSenha()));
+		assertEquals(novoStatus, true);
+
 		
 	}
 
