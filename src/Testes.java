@@ -3,12 +3,12 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class Teste_Denis {
+public class Testes {
 
 	@Test
-	public void test() {		
+	public void test() {
 		//-------------------------------------- Início dos testes -------------------------------------
-		
+
 		//------------------------------------------ Teste 01 ------------------------------------------
 		//Adicionar usuários
 		DBUsuarios listUsu = new DBUsuarios();
@@ -101,31 +101,31 @@ public class Teste_Denis {
 	
 	
 	/*------------------------------- Testes que devem ser feitos --------------------------------
-	
-	------------------------------------------ Teste 01 ------------------------------------------
-ok		- Adicionar usuário
-ok		- Verificar se já existe
-ok		- Confirmar se foi adicionado
-	------------------------------------------ Teste 02 ------------------------------------------
-ok		- Adicionar Restaurante
-ok		- Verificar se já existe
-ok		- Confirmar se foi adicionado
-	------------------------------------------ Teste 03 ------------------------------------------
-ok		- Adicionar prato (Prato, Restaurante)
-ok		- Verificar se o prato existe nesse restaurante
-ok		- Confirmar se foi adicionado
-	------------------------------------------ Teste 04 ------------------------------------------
-ok		- Excluir prato (Prato, Restaurante)
-ok		- Verificar se o prato existe nesse restaurante
-ok		- Confirmar se foi exluído
-	------------------------------------------ Teste 05 ------------------------------------------
-OK		- Buscar prato (nome prato)
-OK		- Buscar prato (ingrediente)
-	------------------------------------------ Teste 06 ------------------------------------------
-OK		- Logar restaurante
-OK		- Verificar se restaurante está logado
-OK		- Logar usuário
-OK		- Verificar se usuário está logado
-	---------------------------------------------------------------------------------------------*/
+		
+		------------------------------------------ Teste 01 ------------------------------------------
+	ok		- Adicionar usuário
+	ok		- Verificar se já existe
+	ok		- Confirmar se foi adicionado
+		------------------------------------------ Teste 02 ------------------------------------------
+	ok		- Adicionar Restaurante
+	ok		- Verificar se já existe
+	ok		- Confirmar se foi adicionado
+		------------------------------------------ Teste 03 ------------------------------------------
+	ok		- Adicionar prato (Prato, Restaurante)
+	ok		- Verificar se o prato existe nesse restaurante
+	ok		- Confirmar se foi adicionado
+		------------------------------------------ Teste 04 ------------------------------------------
+	ok		- Excluir prato (Prato, Restaurante)
+	ok		- Verificar se o prato existe nesse restaurante
+	ok		- Confirmar se foi exluído
+		------------------------------------------ Teste 05 ------------------------------------------
+	ok		- Buscar prato (nome prato)
+	ok		- Buscar prato (ingrediente)
+		------------------------------------------ Teste 06 ------------------------------------------
+	ok		- Logar restaurante
+	ok		- Verificar se restaurante está logado
+	ok		- Logar usuário
+	ok		- Verificar se usuário está logado
+		---------------------------------------------------------------------------------------------*/
 
 }
