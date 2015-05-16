@@ -1,48 +1,13 @@
 import static org.junit.Assert.*;
 
-import java.util.List;
-
 import org.junit.Test;
 
 
 public class Teste_Denis {
 
 	@Test
-	public void test() {
-		//inicio testes
-		//Prato(double preco, Restaurante restaurante, SpecPrato spec)
-		//Restaurante(String nome, Login conta, List<Prato> pratos)
-		//SpecPrato(String nomePrato, String ingredientes)
-		//Usuario(String email, int idade, String sexo, Login conta)
-		//Login(String nomeUsuario, String senha)
-		
-		/*------------------------------------------ Teste 01 ------------------------------------------
-ok		- Adicionar usuário
-ok		- Verificar se já existe
-ok		- Confirmar se foi adicionado
-		------------------------------------------ Teste 02 ------------------------------------------
-ok		- Adicionar Restaurante
-ok		- Verificar se já existe
-ok		- Confirmar se foi adicionado
-		------------------------------------------ Teste 03 ------------------------------------------
-ok		- Adicionar prato (Prato, Restaurante)
-ok		- Verificar se o prato existe nesse restaurante
-ok		- Confirmar se foi adicionado
-		------------------------------------------ Teste 04 ------------------------------------------
-ok		- Excluir prato (Prato, Restaurante)
-ok		- Verificar se o prato existe nesse restaurante
-ok		- Confirmar se foi exluído
-		------------------------------------------ Teste 05 ------------------------------------------
-NAO		- Buscar prato (nome prato)
-NAO		- Buscar prato (ingrediente)
-		------------------------------------------ Teste 06 ------------------------------------------
-OK		- Logar restaurante
-OK		- Verificar se restaurante está logado
-NAO		- Logar usuário
-NAO		- Verificar se usuário está logado
-		---------------------------------------------------------------------------------------------*/
-		
-		
+	public void test() {		
+		//-------------------------------------- Início dos testes -------------------------------------
 		
 		//------------------------------------------ Teste 01 ------------------------------------------
 		//Adicionar usuários
@@ -52,9 +17,10 @@ NAO		- Verificar se usuário está logado
 		listUsu.addUsuario(new Usuario("user3@site.com", 30, "m", new Login("user3", "12345")));
 		assertEquals(listUsu.getUsuarios().size(), 3);
 		
-		//Adicionar usuário REPETIDO
+		//Adicionar usuário REPETIDO (não deve adicionar e a lista continua com 3 usuários)
 		listUsu.addUsuario(new Usuario("user3@site.com", 30, "m", new Login("user3", "12345")));
 		assertEquals(listUsu.getUsuarios().size(), 3);
+		
 		
 		//------------------------------------------ Teste 02 ------------------------------------------
 		//Adicionar restaurantes
@@ -66,9 +32,10 @@ NAO		- Verificar se usuário está logado
 		listRest.addRestaurante(new Restaurante("Restaurante E", new Login("restE", "12345")));	
 		assertEquals(listRest.getRestaurantes().size(), 5);
 	
-		//Adicionar restaurante REPETIDO
+		//Adicionar restaurante REPETIDO (não deve adicionar e a lista continua com 5 restaurantes)
 		listRest.addRestaurante(new Restaurante("Restaurante E", new Login("restA", "12345")));
 		assertEquals(listRest.getRestaurantes().size(), 5);
+		
 		
 		//------------------------------------------ Teste 03 ------------------------------------------
 		//Adicionar prato
@@ -76,23 +43,32 @@ NAO		- Verificar se usuário está logado
 		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 1", "Arroz, feijão")));
 		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 2", "Arroz, feijão")));
 		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 3", "Arroz, feijão")));
-		assertEquals(listPrato.getPratos().size(), 3);
+		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante B"), new SpecPrato("Prato 1", "Carne, feijão")));
+		assertEquals(listPrato.getPratos().size(), 4);
 		
-		//Adicionar prato JÁ existente
+		//Adicionar prato JÁ existente (não deve adicionar e a lista continua com 4 pratos)
 		listPrato.addPrato(new Prato(49.90, listRest.getRestaurante("Restaurante A"), new SpecPrato("Prato 3", "Arroz, feijão")));
-		assertEquals(listPrato.getPratos().size(), 3);
+		assertEquals(listPrato.getPratos().size(), 4);
+		
 		
 		//------------------------------------------ Teste 04 ------------------------------------------
-		//Remover prato existente
+		//Remover prato existente (um prato será removido e a lista terá 3 pratos)
 		listPrato.excluirPrato("Prato 2", "Restaurante A");		
-		assertEquals(listPrato.getPratos().size(), 2);
+		assertEquals(listPrato.getPratos().size(), 3);
 		
-		//Remover prato NÃO existente
-		listPrato.excluirPrato("Prato 1", "Restaurante B");
-		assertEquals(listPrato.getPratos().size(), 2);
+		//Remover prato NÃO existente (nenhum prato será removido e a lista continua com 3 pratos)
+		listPrato.excluirPrato("Prato 2", "Restaurante B");
+		assertEquals(listPrato.getPratos().size(), 3);
+		
 		
 		//------------------------------------------ Teste 05 ------------------------------------------
+		//Buscar prato por NOME	(deve retornar 2, pois 2 pratos com esse nome foram adicionados)
+		assertEquals(listPrato.buscarPrato("Prato 1").isEmpty(), false);
+		assertEquals(listPrato.buscarPrato("Prato 1").size(), 2);
 		
+		//Buscar prato por INGREDIENTE (deve retornar 2, pois 3 pratos foram adicionados com esse ingrediente, mas 1 foi removido)
+		assertEquals(listPrato.buscarPrato("Arroz").isEmpty(), false);
+		assertEquals(listPrato.buscarPrato("Arroz").size(), 2);
 		
 		
 		//------------------------------------------ Teste 06 ------------------------------------------
@@ -113,7 +89,43 @@ NAO		- Verificar se usuário está logado
 		//Verificar status APÓS logar restaurante (deve retornar true)
 		boolean novoStatusUser = userA.getConta().logar(new Login(userA.getConta().getNomeUsuario(), userA.getConta().getSenha()));
 		assertEquals(novoStatusUser, true);
-		
 	}
+	
+	/*--------------------------- Estrutura de parâmetros dos métodos ----------------------------
+	
+		- Prato(double preco, Restaurante restaurante, SpecPrato spec)
+		- Restaurante(String nome, Login conta, List<Prato> pratos)
+		- SpecPrato(String nomePrato, String ingredientes)
+		- Usuario(String email, int idade, String sexo, Login conta)
+		- Login(String nomeUsuario, String senha)*/
+	
+	
+	/*------------------------------- Testes que devem ser feitos --------------------------------
+	
+	------------------------------------------ Teste 01 ------------------------------------------
+ok		- Adicionar usuário
+ok		- Verificar se já existe
+ok		- Confirmar se foi adicionado
+	------------------------------------------ Teste 02 ------------------------------------------
+ok		- Adicionar Restaurante
+ok		- Verificar se já existe
+ok		- Confirmar se foi adicionado
+	------------------------------------------ Teste 03 ------------------------------------------
+ok		- Adicionar prato (Prato, Restaurante)
+ok		- Verificar se o prato existe nesse restaurante
+ok		- Confirmar se foi adicionado
+	------------------------------------------ Teste 04 ------------------------------------------
+ok		- Excluir prato (Prato, Restaurante)
+ok		- Verificar se o prato existe nesse restaurante
+ok		- Confirmar se foi exluído
+	------------------------------------------ Teste 05 ------------------------------------------
+OK		- Buscar prato (nome prato)
+OK		- Buscar prato (ingrediente)
+	------------------------------------------ Teste 06 ------------------------------------------
+OK		- Logar restaurante
+OK		- Verificar se restaurante está logado
+OK		- Logar usuário
+OK		- Verificar se usuário está logado
+	---------------------------------------------------------------------------------------------*/
 
 }
