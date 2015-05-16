@@ -15,7 +15,8 @@ public class DBPrato {
 	
 	public boolean verificarExistente(Prato prato){
 		for(Prato p:pratos){
-			if(p.getSpec().getNomePrato().equals(prato.getSpec().getNomePrato())) return true;
+			if(p.getSpec().getNomePrato().equals(prato.getSpec().getNomePrato()) &&
+				p.getRestaurante().getNome().equals(prato.getRestaurante().getNome())) return true;
 		}
 		return false;
 	}
