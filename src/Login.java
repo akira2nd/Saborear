@@ -24,7 +24,7 @@ public class Login {
 		status = s;
 	}
 	
-	public boolean matches(Login conta){
+	public boolean logar(Login conta){
 		if(!nomeUsuario.equals(getNomeUsuario())) return false;
 		if(!senha.equals(getSenha())) return false;
 		setStatus(true);

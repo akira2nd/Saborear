@@ -20,4 +20,11 @@ public class DBRestaurante {
 		}
 		return false;
 	}
+	
+	public Restaurante getRestaurante(String nomeRestaurante){
+		for(Restaurante r:restaurantes){
+			if(r.getNome().equals(nomeRestaurante)) return r;
+		}
+		return null;
+	}
 }

@@ -15,7 +15,8 @@ public class DBPrato {
 	
 	public boolean verificarExistente(Prato prato){
 		for(Prato p:pratos){
-			if(p.getSpec().getNomePrato().equals(prato.getSpec().getNomePrato())) return true;
+			if(p.getSpec().getNomePrato().equals(prato.getSpec().getNomePrato()) &&
+				p.getRestaurante().getNome().equals(prato.getRestaurante().getNome())) return true;
 		}
 		return false;
 	}
@@ -24,5 +25,15 @@ public class DBPrato {
 		for(Prato prato:pratos){
 			if(prato.getRestaurante().getNome().equals(nomeRestaurante)  && prato.getSpec().getNomePrato().equals(nomePrato)) pratos.remove(prato);
 		}
+	}
+	
+	public ConcurrentLinkedQueue<Prato> buscarPrato(String palavra){
+		ConcurrentLinkedQueue<Prato> encontrados = new ConcurrentLinkedQueue<Prato>();
+		for(Prato prato:pratos){
+			if(prato.getSpec().getNomePrato().contains(palavra) || (prato.getSpec().getIngredientes().contains(palavra))){
+				encontrados.add(prato);
+			}
+		}
+		return encontrados;
 	}
 }
